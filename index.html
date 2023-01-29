@@ -333,6 +333,9 @@
                 <div class="btn sound-btn"><svg fill="white" width="24" height="24"><use href="#icon-sound-off" xlink:href="#icon-sound-off"></use></svg></div>
                 <div style="display: none;" class="btn settings-btn"><svg fill="white" width="24" height="24"><use href="#icon-settings" xlink:href="#icon-settings"></use></svg></div>
             </div>
+			<div id="string" style="position: absolute;top: 100px;text-align: center;">
+				<div id="showStr"></div>
+			</div>
 			<iframe style="position: absolute;bottom: 10px; left: 50%; transform: translateX(-50%);" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
 			src="https://music.163.com/outchain/player?type=2&id=516076896&auto=1&height=66"></iframe>
             <div class="menu hide">
@@ -2672,10 +2675,25 @@
         				// setLoadingStatus('Error Loading Audio');
         				return Promise.reject(reason);
         			}
+
         		);
-        	}, 2000);
-  
-      
+        	}, 3000);
+		
+			var index = 0;
+			var str = '感激上天让我遇见了你，知道吗？遇见你是我最大的幸福，遇见你是我永远的欢乐，愿你常住我心，愿我每一天从你那领受阳光雨露，领受坚强勇敢，我爱你！';
+			console.log(str.length);
+			var timeLoop = setInterval(function() {
+			console.log(index);
+			if(index == str.length) {
+			//清除定时器
+			clearInterval(timeLoop);
+			//若要让效果无限循环，把index归0即可
+			// index = 0;
+			}
+			var a = document.getElementById("showStr")
+			a.innerText = str.substring(0, index++);
+			},400)
+        
         
         //  profile header doesn't need audio, just initialize.
         
